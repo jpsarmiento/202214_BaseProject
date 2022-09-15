@@ -7,8 +7,6 @@ import {
     BusinessLogicException,
   } from '../shared/errors/business-errors';
 
-
-
 @Injectable()
 export class ProductoService {
 
@@ -34,7 +32,7 @@ export class ProductoService {
       }
 
       async create(producto: ProductoEntity): Promise<ProductoEntity> {
-        if(producto.tipo === 'Perecedero' || producto.tipo === 'No perecedero') {
+        if(producto.tipo != 'Perecedero' && producto.tipo != 'No perecedero') {
             throw new BusinessLogicException(
                 'El tipo del producto debe ser Perecedero o No perecedero',BusinessError.PRECONDITION_FAILED);
         }
@@ -46,7 +44,7 @@ export class ProductoService {
         if (!persistedProducto)
           throw new BusinessLogicException('El producto con el id suministrado no existe',BusinessError.NOT_FOUND);
           
-        if(producto.tipo === 'Perecedero' || producto.tipo === 'No perecedero') {
+        if(producto.tipo != 'Perecedero' && producto.tipo != 'No perecedero') {
             throw new BusinessLogicException(
                 'El tipo del producto debe ser Perecedero o No perecedero',BusinessError.PRECONDITION_FAILED);
         }
