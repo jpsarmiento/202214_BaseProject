@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { ProductoEntity } from 'src/producto/producto.entity';
+import { ProductoEntity } from '../producto/producto.entity';
 import { Repository } from 'typeorm';
-import { TiendaEntity } from 'src/tienda/tienda.entity';
+import { TiendaEntity } from '../tienda/tienda.entity';
 import {
     BusinessError,
     BusinessLogicException,
@@ -37,7 +37,7 @@ async findTiendaByProductoIdTiendaId(productoId: string, tiendaId: string): Prom
     if (!tienda)
       throw new BusinessLogicException('La tienda con el id suministrado no existe', BusinessError.NOT_FOUND)
    
-    const producto: ProductoEntity = await this.productoRepository.findOne({where: {id: productoId}, relations: ["products"]});
+    const producto: ProductoEntity = await this.productoRepository.findOne({where: {id: productoId}, relations: ["tiendas"]});
     if (!producto)
       throw new BusinessLogicException('El producto con el id suministrado no existe', BusinessError.NOT_FOUND)
 
