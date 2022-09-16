@@ -21,7 +21,7 @@ export class ProductoTiendaController {
     }
 
     @Get(':productoId/tiendas')
-    async findProductsByGastronomicCultureId(@Param('productoId') productoId: string){
+    async findTiendasByProductoId(@Param('productoId') productoId: string){
     return await this.productoTiendaService.findTiendasByProductoId(productoId);
     }
 
