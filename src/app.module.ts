@@ -9,7 +9,7 @@ import { TiendaEntity } from './tienda/tienda.entity';
 import { ProductoTiendaModule } from './producto-tienda/producto-tienda.module';
 
 @Module({
-  imports: [ProductoModule, TiendaModule, 
+  imports: [ProductoModule, TiendaModule, ProductoTiendaModule,
     TypeOrmModule.forRoot({
     type: 'postgres',
     host: 'localhost',
